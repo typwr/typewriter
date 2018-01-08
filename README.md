@@ -1,6 +1,8 @@
 # typewriter
 
-<div align=center>![logo](https://github.com/typwr/typewriter/blob/master/Assets/logo.png)</div>
+<div align=center>
+	![logo](https://github.com/typwr/typewriter/blob/master/Assets/logo.png)
+</div>
 
 简单来说，typewriter是客户端翻译服务端数据交换格式的代码翻译器。
 
