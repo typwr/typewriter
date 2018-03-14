@@ -14,41 +14,12 @@ typewriter就是上述问题在客户端领域的翻译器。
 
 
 
-#### [尝尝鲜(Example)](https://github.com/typwr/typewriter-Example)
-
-
-
-## 支持
-
-typewriter支持主流的语言和数据交换格式，见下表：
-
-| 语言    | JSON          | ProtocolBuffer |
-| ----- | ------------- | -------------- |
-| ObjC  | ✅（自由选择学序列化方案） | ✅              |
-| Swift | ✅（Codable）    | ❎              |
-| Java  | ✅（自由选择序列化方案）  | ✅（Wire）        |
-
-
-
-## 场景
-
-客户端将从服务端拿到的数据常做为Model，这就是自然使typewriter称为构建应用Model Layer的好帮手。很可惜的是，无论怎么抽象，typewriter也不能覆盖100%的场景。假如，数据需要有大量的处理逻辑，typewriter也就无能为力了。不过，在90%的情况下，typewriter是可以胜任的。不仅如此，在一些架构特点下，typewriter能发挥出更多的威力。
-
-架构特点：
-
-- 业务后移：在客户端/服务端之间，服务端承担更多的数据处理、计算责任，尽量留给客户端只做展示，甚至发展出bff(backend for frontend)。
-- 数据交换格式隐藏：客户端网络层或中间处理层，无论何种数据交换格式，最终生成对象交给调用方，在RPC中比较常见。
-- 业务一致：iOS和android双端保证呈现出来的业务一致性。
-- 字节计较的代码空间(code size)：代码空间是个让客户端开发者常常头疼的问题，尤其在iOS端。
-- Immutable Model Layer：客户端将Model Immutable化，结合单向数据流，形成响应式架构。
-
-
 
 ## 安装
 
 请先确认已经安装Xcode。
 
-#### Homebrew
+### Homebrew
 
 ```c
 brew tap typwr/typewriter
@@ -82,8 +53,43 @@ $ typewriter file1 file2 ... [options]
 - --help：帮助选项。
 
 
+举例如下：
 
-#### [更多用法-语法和规则](https://github.com/typwr/typewriter/blob/master/Docs/SyntaxAndRule.md)
+```c
+$ typewriter /Users/.../json --objc_out=./ --swift_out=./ --java_out=./
+```
+
+
+
+## 支持
+
+typewriter支持主流的语言和数据交换格式，见下表：
+
+| 语言  | JSON                      | ProtocolBuffer |
+| ----- | ------------------------- | -------------- |
+| ObjC  | ✅（自由选择学序列化方案） | ✅              |
+| Swift | ✅（Codable）              | ❎              |
+| Java  | ✅（自由选择序列化方案）   | ✅（Wire）      |
+
+### [例子详见这里](https://github.com/typwr/typewriter-Example)
+
+
+
+### [语法和规则详见这里](https://github.com/typwr/typewriter/blob/master/Docs/SyntaxAndRule.md)
+
+
+
+## 场景
+
+客户端将从服务端拿到的数据常做为Model，这就是自然使typewriter称为构建应用Model Layer的好帮手。很可惜的是，无论怎么抽象，typewriter也不能覆盖100%的场景。假如，数据需要有大量的处理逻辑，typewriter也就无能为力了。不过，在90%的情况下，typewriter是可以胜任的。不仅如此，在一些架构特点下，typewriter能发挥出更多的威力。
+
+架构特点：
+
+- 业务后移：在客户端/服务端之间，服务端承担更多的数据处理、计算责任，尽量留给客户端只做展示，甚至发展出bff(backend for frontend)。
+- 数据交换格式隐藏：客户端网络层或中间处理层，无论何种数据交换格式，最终生成对象交给调用方，在RPC中比较常见。
+- 业务一致：iOS和android双端保证呈现出来的业务一致性。
+- 字节计较的代码空间(code size)：代码空间是个让客户端开发者常常头疼的问题，尤其在iOS端。
+- Immutable Model Layer：客户端将Model Immutable化，结合单向数据流，形成响应式架构。
 
 
 
@@ -96,6 +102,7 @@ $ typewriter file1 file2 ... [options]
 
 
 
+
 ## runtime
 
 为了最大程度的复用代码，typewriter假设一些方法在Model的继承体中已经实现了。typewriter也提供了BaseModel的实现，这些代码可被视作typewriter的runtime库。可在[typewriter-Example](https://github.com/typwr/typewriter-Example)中找到。
@@ -104,7 +111,7 @@ $ typewriter file1 file2 ... [options]
 
 
 
-#### [深入更多-BehindTheScene](https://github.com/typwr/typewriter/blob/master/Docs/BehindTheScene.md)
+### [深入更多-BehindTheScene](https://github.com/typwr/typewriter/blob/master/Docs/BehindTheScene.md)
 
 
 
